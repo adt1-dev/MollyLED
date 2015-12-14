@@ -39,7 +39,7 @@ public class Debug {
      * @param enable Enable debug mode ?
      */
     public static void setDebug(boolean enable) {
-        debug = enable;
+        debug = false;
     }
 
     /**
