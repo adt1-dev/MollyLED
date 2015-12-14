@@ -78,22 +78,16 @@ public class LedConfigActivity extends Activity
 
 	private class BackgroundWriteDevice extends AsyncTask<String, Void, String>
 	{
-        @Override
-        protected String doInBackground(String... params) {
-            Shell.SU.run("echo " + params + " > " + LED_PATH);
+
+		@Override
+		protected String doInBackground(String[] params)
+		{
+			Shell.SU.run("echo " + params[0] + " > " + LED_PATH);
             return null;
-        }
+		}
 
-        @Override
-        protected void onPostExecute(String result) {
-        }
-
-        @Override
-        protected void onPreExecute() {
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-        }
+        @Override protected void onPostExecute(String result) {}
+        @Override protected void onPreExecute() {}
+        @Override protected void onProgressUpdate(Void[] values) {}
     }
 }
