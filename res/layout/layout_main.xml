@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<RelativeLayout
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent"
+		android:padding="30dp">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Normal Mode:"
+			android:id="@+id/layout1TextView1"/>
+
+		<View
+			android:background="?android:attr/dividerVertical"
+			android:layout_height="1dp"
+			android:layout_width="match_parent"
+			android:layout_below="@id/layout1TextView1"
+			android:id="@+id/layout1View1"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="+"
+			android:layout_alignParentRight="true"
+			android:id="@+id/redPlusButton"
+			android:layout_below="@id/layout1View1"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="-"
+			android:layout_below="@id/layout1View1"
+			android:layout_centerHorizontal="true"
+			android:id="@+id/redMinusButton"/>
+
+		<SeekBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/redMinusButton"
+			android:layout_alignBottom="@id/redMinusButton"
+			android:layout_alignTop="@id/redMinusButton"
+			android:layout_toStartOf="@id/redPlusButton"
+			android:layout_toEndOf="@id/redMinusButton"
+			android:id="@+id/redSlider"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="-"
+			android:layout_below="@id/redMinusButton"
+			android:layout_centerHorizontal="true"
+			android:id="@+id/greenMinusButton"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="+"
+			android:layout_below="@id/redPlusButton"
+			android:layout_alignParentRight="true"
+			android:id="@+id/greenPlusButton"/>
+
+		<SeekBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/greenMinusButton"
+			android:layout_alignTop="@id/greenMinusButton"
+			android:layout_alignBottom="@id/greenMinusButton"
+			android:layout_toStartOf="@id/greenPlusButton"
+			android:layout_toEndOf="@id/greenMinusButton"
+			android:id="@+id/greenSlider"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="-"
+			android:layout_below="@id/greenMinusButton"
+			android:layout_centerHorizontal="true"
+			android:id="@+id/blueMinusButton"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="+"
+			android:layout_below="@id/greenPlusButton"
+			android:layout_alignParentRight="true"
+			android:id="@+id/bluePlusButton"/>
+
+		<SeekBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/blueMinusButton"
+			android:layout_alignTop="@id/blueMinusButton"
+			android:layout_alignBottom="@id/blueMinusButton"
+			android:layout_toStartOf="@id/bluePlusButton"
+			android:layout_toEndOf="@id/blueMinusButton"
+			android:id="@+id/blueSlider"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="0"
+			android:layout_toLeftOf="@id/redMinusButton"
+			android:layout_alignTop="@id/redMinusButton"
+			android:layout_alignBottom="@id/redMinusButton"
+			android:gravity="center"
+			android:paddingRight="15dp"
+			android:paddingLeft="15dp"
+			android:id="@+id/txtRedValue"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="0"
+			android:layout_toLeftOf="@id/greenMinusButton"
+			android:layout_alignBottom="@id/greenMinusButton"
+			android:layout_alignTop="@id/greenMinusButton"
+			android:gravity="center"
+			android:paddingRight="15dp"
+			android:paddingLeft="15dp"
+			android:id="@+id/txtGreenValue"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="0"
+			android:layout_toLeftOf="@id/blueMinusButton"
+			android:layout_alignBottom="@id/blueMinusButton"
+			android:layout_alignTop="@id/blueMinusButton"
+			android:gravity="center"
+			android:paddingRight="15dp"
+			android:paddingLeft="15dp"
+			android:id="@+id/txtBlueValue"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Red"
+			android:layout_below="@id/layout1View1"
+			android:layout_alignBottom="@id/txtRedValue"
+			android:gravity="center"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"
+			android:id="@+id/layout1TextView2"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Green"
+			android:layout_below="@id/layout1TextView2"
+			android:layout_alignBottom="@id/txtGreenValue"
+			android:gravity="center"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"
+			android:id="@+id/layout1TextView4"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Blue"
+			android:layout_below="@id/layout1TextView4"
+			android:layout_alignBottom="@id/txtBlueValue"
+			android:gravity="center"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"
+			android:id="@+id/layout1TextView3"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Recovery Mode:"
+			android:layout_below="@id/layout1TextView3"
+			android:paddingTop="30dp"
+			android:id="@+id/layout1TextView5"/>
+
+		<View
+			android:background="?android:attr/dividerVertical"
+			android:layout_height="1dp"
+			android:layout_width="match_parent"
+			android:layout_below="@id/layout1TextView5"
+			android:id="@+id/layout1View2"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="-"
+			android:layout_below="@id/layout1View2"
+			android:layout_centerHorizontal="true"
+			android:id="@+id/recoveryRedMinusButton"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="+"
+			android:layout_below="@id/layout1View2"
+			android:layout_alignParentRight="true"
+			android:id="@+id/recoveryRedPlusButton"/>
+
+		<SeekBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/recoveryRedMinusButton"
+			android:layout_alignTop="@id/recoveryRedMinusButton"
+			android:layout_alignBottom="@id/recoveryRedMinusButton"
+			android:layout_toStartOf="@id/recoveryRedPlusButton"
+			android:layout_toEndOf="@id/recoveryRedMinusButton"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="-"
+			android:layout_below="@id/recoveryRedMinusButton"
+			android:layout_centerHorizontal="true"
+			android:id="@+id/recoveryGreenMinusButton"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="+"
+			android:layout_below="@id/recoveryRedPlusButton"
+			android:layout_alignParentRight="true"
+			android:id="@+id/recoveryGreenPlusButton"/>
+
+		<SeekBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/recoveryGreenMinusButton"
+			android:layout_alignTop="@id/recoveryGreenMinusButton"
+			android:layout_alignBottom="@id/recoveryGreenMinusButton"
+			android:layout_toEndOf="@id/recoveryGreenMinusButton"
+			android:layout_toStartOf="@id/recoveryGreenPlusButton"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="-"
+			android:layout_below="@id/recoveryGreenMinusButton"
+			android:layout_centerHorizontal="true"
+			android:id="@+id/recoveryBlueMinusButton"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="+"
+			android:layout_below="@id/recoveryGreenPlusButton"
+			android:layout_alignParentRight="true"
+			android:id="@+id/recoveryBluePlusButton"/>
+
+		<SeekBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@id/recoveryBlueMinusButton"
+			android:layout_alignTop="@id/recoveryBlueMinusButton"
+			android:layout_alignBottom="@id/recoveryBlueMinusButton"
+			android:layout_toEndOf="@id/recoveryBlueMinusButton"
+			android:layout_toStartOf="@id/recoveryBluePlusButton"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="0"
+			android:layout_toLeftOf="@id/recoveryRedMinusButton"
+			android:layout_alignTop="@id/recoveryRedMinusButton"
+			android:layout_alignBottom="@id/recoveryRedMinusButton"
+			android:gravity="center"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"
+			android:id="@+id/txtRecoveryRedValue"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="0"
+			android:layout_toLeftOf="@id/recoveryGreenMinusButton"
+			android:layout_alignTop="@id/recoveryGreenMinusButton"
+			android:layout_alignBottom="@id/recoveryGreenMinusButton"
+			android:paddingRight="15dp"
+			android:paddingLeft="15dp"
+			android:gravity="center"
+			android:id="@+id/txtRecoveryGreenValue"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="0"
+			android:layout_toLeftOf="@id/recoveryBlueMinusButton"
+			android:layout_alignTop="@id/recoveryBlueMinusButton"
+			android:layout_alignBottom="@id/recoveryBlueMinusButton"
+			android:gravity="center"
+			android:paddingRight="15dp"
+			android:paddingLeft="15dp"
+			android:id="@+id/txtRecoveryBlueValue"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Red"
+			android:layout_below="@id/layout1View2"
+			android:layout_alignBottom="@id/txtRecoveryRedValue"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"
+			android:gravity="center"
+			android:id="@+id/layout1TextView6"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Green"
+			android:layout_below="@id/layout1TextView6"
+			android:gravity="center"
+			android:layout_alignBottom="@id/txtRecoveryGreenValue"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"
+			android:id="@+id/layout1TextView7"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="Blue"
+			android:layout_below="@id/layout1TextView7"
+			android:layout_alignBottom="@id/txtRecoveryBlueValue"
+			android:gravity="center"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"/>
+
+	</RelativeLayout>
+
+</RelativeLayout>
+
