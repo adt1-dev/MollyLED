@@ -24,7 +24,6 @@ import java.io.*;
 import java.util.*;
 import android.view.View.*;
 import android.view.*;
-import android.graphics.drawable.*;
 
 public class LedConfigActivity extends Activity
 {
@@ -64,7 +63,6 @@ public class LedConfigActivity extends Activity
 				public void onClick(View p1)
 				{
 					RED.setValue(RED.getValue() + 1);
-					redSeek.setProgress(RED.getValue());
 				}
 		});
 		redMinus.setOnClickListener(new OnClickListener(){
@@ -72,7 +70,6 @@ public class LedConfigActivity extends Activity
 				public void onClick(View p1)
 				{
 					RED.setValue(RED.getValue() - 1);
-					redSeek.setProgress(RED.getValue());
 				}
 			});
 	}
@@ -129,16 +126,22 @@ public class LedConfigActivity extends Activity
 		TextView redTextView = (TextView)findViewById(R.id.txtRedValue);
 		TextView greenTextView = (TextView)findViewById(R.id.txtGreenValue);
 		TextView blueTextView = (TextView)findViewById(R.id.txtBlueValue);
+		SeekBar redSeek = (SeekBar)findViewById(R.id.redSlider);
+		SeekBar greenSeek = (SeekBar)findViewById(R.id.greenSlider);
+		SeekBar blueSeek = (SeekBar)findViewById(R.id.blueSlider);
 		if (color.contains("brightness"))
 		{
+			redSeek.setProgress(value);
 			redTextView.setText(Integer.toString(value));
 		} else
 		if (color.contains("green"))
 		{
+			greenSeek.setProgress(value);
 			greenTextView.setText(Integer.toString(value));
 		} else
 		if (color.contains("blue"))
 		{
+			blueSeek.setProgress(value);
 			blueTextView.setText(Integer.toString(value));
 		}
 	}
