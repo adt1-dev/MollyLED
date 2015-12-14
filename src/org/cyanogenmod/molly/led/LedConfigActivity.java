@@ -22,13 +22,15 @@ import android.widget.*;
 import eu.chainfire.libsuperuser.*;
 import java.io.*;
 import java.util.*;
+import android.view.View.*;
+import android.view.*;
 
 public class LedConfigActivity extends Activity
 {
 	int MAX = 255, MIN = 0;
 	int ENABLED = 1, DISABLED = 0;
-	int SEEK_MIN = 20;
 	//String LED_PATH = "/sys/class/devices/molly-led/";
+	// Just testing this on my Nexus 7, will change when done.
 	String LED_PATH = "/sys/class/leds/white/brightness";
 
     @Override
@@ -36,79 +38,5 @@ public class LedConfigActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
-
-		final TextView redValue = (TextView)findViewById(R.id.txtRedValue);
-		TextView greenValue = (TextView)findViewById(R.id.txtGreenValue);
-		TextView blueValue = (TextView)findViewById(R.id.txtBlueValue);
-		SeekBar redSeek = (SeekBar)findViewById(R.id.redSlider);
-
-		final MutableString RED = new MutableString(null), GREEN = null, BLUE = null;
-
-		try
-		{
-			// This weird one-liner came from http://stackoverflow.com/a/7449797, plus .trim()
-			// to get rid of the newline at the end.
-			RED.setValue(new Scanner(new File(LED_PATH)).useDelimiter("\\A").next().trim());
-
-		}
-		catch (FileNotFoundException e)
-		{
-			Toast.makeText(getApplicationContext(), "Molly LED driver not properly initialized!", Toast.LENGTH_LONG);
-		}
-
-		redValue.setText(RED.getValue());
-		redSeek.setMax(MAX + SEEK_MIN);
-
-		if (!Shell.SU.available())
-		{
-			Toast.makeText(getApplicationContext(), "This application needs root access to run.", Toast.LENGTH_LONG);
-			return;
-		}
-
-		redSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-				@Override public void onStartTrackingTouch(SeekBar p1)
-				{}
-				@Override public void onStopTrackingTouch(SeekBar p1)
-				{}
-				@Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-				{
-					new BackgroundWriteDevice().execute(Integer.toString(progress));
-					RED.setValue(String.valueOf(progress));
-				}
-			});
-    }
-
-	private class BackgroundWriteDevice extends AsyncTask<String, Void, String>
-	{
-
-		@Override
-		protected String doInBackground(String[] params)
-		{
-			Shell.SU.run("echo " + params[0] + " > " + LED_PATH);
-            return null;
-		}
-
-        @Override protected void onPostExecute(String result)
-		{}
-        @Override protected void onPreExecute()
-		{}
-        @Override protected void onProgressUpdate(Void[] values)
-		{}
-    }
-	public class MutableString
-	{
-		private String variable;
-		public MutableString(String value)
-		{
-			variable = value;
-		}
-		public void setValue(String value)
-		{
-			variable = value;
-		}
-		public String getValue()
-		{
-		    return variable;
-		}
 	}
 }
