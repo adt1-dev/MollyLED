@@ -18,6 +18,7 @@ package org.cyanogenmod.molly.led;
 
 import android.app.*;
 import android.os.*;
+import android.util.Log;
 import android.widget.*;
 import eu.chainfire.libsuperuser.*;
 import java.io.*;
@@ -27,29 +28,83 @@ import android.view.*;
 
 public class LedConfigActivity extends Activity
 {
-	int MAX = 255, MIN = 0;
+	int MAX = 255;
 	int ENABLED = 1, DISABLED = 0;
-	//String LED_PATH = "/sys/class/devices/molly-led/";
-	// Just testing this on my Nexus 7, will change when done.
-	String LED_PATH = "/sys/class/leds/white/";
+	String LED_PATH = "/sys/devices/platform/molly-led/";
+	int RED_VALUE = Integer.parseInt(readOneLine(LED_PATH + "red"));
+	int GREEN_VALUE = Integer.parseInt(readOneLine(LED_PATH + "green"));
+	int BLUE_VALUE = Integer.parseInt(readOneLine(LED_PATH + "blue"));
+	int PULSING_VALUE = Integer.parseInt(readOneLine(LED_PATH + "pulsing"));
+    private static final String TAG = "MollyLED";
+
+    /**
+     * Reads the first line of text from the given file
+     */
+    public static String readOneLine(String fileName) {
+        String line = null;
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(fileName), 512);
+            line = reader.readLine();
+        } catch (IOException e) {
+            Log.e(TAG, "Could not read from file " + fileName, e);
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                // ignored, not much we can do anyway
+            }
+        }
+
+        return line;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
-		
-		final LedValue RED = new LedValue(0, "brightness"), GREEN = new LedValue(0, "green"), BLUE = new LedValue(0, "blue");
-		
+		Log.i(TAG, "RED: " + RED_VALUE + " GREEN: " + GREEN_VALUE + " BLUE: " + BLUE_VALUE);
+		if (RED_VALUE == 255) {
+			RED_VALUE = 254;
+		}
+		if (GREEN_VALUE == 255) {
+			GREEN_VALUE = 254;
+		}
+		if (BLUE_VALUE == 255) {
+			BLUE_VALUE = 254;
+		}
+		final LedValue RED = new LedValue(RED_VALUE, "red"),
+				GREEN = new LedValue(GREEN_VALUE, "green"), BLUE = new LedValue(BLUE_VALUE, "blue");
+
+		updatePrintedValue(RED_VALUE, "red");
+		updatePrintedValue(GREEN_VALUE, "green");
+		updatePrintedValue(BLUE_VALUE, "blue");
 		final SeekBar redSeek = (SeekBar)findViewById(R.id.redSlider);
+		final SeekBar greenSeek = (SeekBar)findViewById(R.id.greenSlider);
+		final SeekBar blueSeek = (SeekBar)findViewById(R.id.blueSlider);
 		Button redPlus = (Button)findViewById(R.id.redPlusButton);
 		Button redMinus = (Button)findViewById(R.id.redMinusButton);
-		
+		Button greenPlus = (Button)findViewById(R.id.greenPlusButton);
+		Button greenMinus = (Button)findViewById(R.id.greenMinusButton);
+		Button bluePlus = (Button)findViewById(R.id.bluePlusButton);
+		Button blueMinus = (Button)findViewById(R.id.blueMinusButton);
+
 		redSeek.setMax(MAX);
-		
+		redSeek.setProgress(RED_VALUE);
+		greenSeek.setMax(MAX);
+		greenSeek.setProgress(GREEN_VALUE);
+		blueSeek.setMax(MAX);
+		blueSeek.setProgress(BLUE_VALUE);
+
 		redSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
 		{
-				@Override public void onProgressChanged(SeekBar p1, int p2, boolean p3){}
+				@Override public void onProgressChanged(SeekBar p1, int p2, boolean p3){
+					RED.setValue(p1.getProgress());
+				}
 				@Override public void onStartTrackingTouch(SeekBar p1){}
 				@Override
 				public void onStopTrackingTouch(SeekBar p1)
@@ -70,6 +125,60 @@ public class LedConfigActivity extends Activity
 				public void onClick(View p1)
 				{
 					RED.setValue(RED.getValue() - 1);
+				}
+			});
+		greenSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+		{
+				@Override public void onProgressChanged(SeekBar p1, int p2, boolean p3){
+					GREEN.setValue(p1.getProgress());
+				}
+				@Override public void onStartTrackingTouch(SeekBar p1){}
+				@Override
+				public void onStopTrackingTouch(SeekBar p1)
+				{
+					GREEN.setValue(p1.getProgress());
+				}
+			}
+		);
+		greenPlus.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View p1)
+				{
+					GREEN.setValue(GREEN.getValue() + 1);
+				}
+		});
+		greenMinus.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View p1)
+				{
+					GREEN.setValue(GREEN.getValue() - 1);
+				}
+			});
+		blueSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+		{
+				@Override public void onProgressChanged(SeekBar p1, int p2, boolean p3){
+					BLUE.setValue(p1.getProgress());
+				}
+				@Override public void onStartTrackingTouch(SeekBar p1){}
+				@Override
+				public void onStopTrackingTouch(SeekBar p1)
+				{
+					BLUE.setValue(p1.getProgress());
+				}
+			}
+		);
+		bluePlus.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View p1)
+				{
+					BLUE.setValue(BLUE.getValue() + 1);
+				}
+		});
+		blueMinus.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View p1)
+				{
+					BLUE.setValue(BLUE.getValue() - 1);
 				}
 			});
 	}
@@ -108,11 +217,15 @@ public class LedConfigActivity extends Activity
 	
 	private class WriteValueInBG extends AsyncTask<String, Void, String>
 	{
-		@Override
 		protected String writeToDevice(String value, String color)
 		{
 			// I honestly wish there was a better way than this.
 			Shell.SU.run("echo " + value + " > " + LED_PATH + color);
+			// Assume that if we are changing value here we want to see the changes
+			if (PULSING_VALUE == 1) {
+				Shell.SU.run("echo " + "0" + " > " + LED_PATH + "pulsing");
+			}
+			Log.i(TAG, "echo " + value + " > " + LED_PATH + color);
             return null;
 		}
 		@Override protected String doInBackground(String[] params){return null;}
@@ -129,7 +242,7 @@ public class LedConfigActivity extends Activity
 		SeekBar redSeek = (SeekBar)findViewById(R.id.redSlider);
 		SeekBar greenSeek = (SeekBar)findViewById(R.id.greenSlider);
 		SeekBar blueSeek = (SeekBar)findViewById(R.id.blueSlider);
-		if (color.contains("brightness"))
+		if (color.contains("red"))
 		{
 			redSeek.setProgress(value);
 			redTextView.setText(Integer.toString(value));

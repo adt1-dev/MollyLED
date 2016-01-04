@@ -12,7 +12,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Normal Mode:"
+			android:text="@string/normal_mode"
 			android:id="@+id/layout1TextView1"/>
 
 		<View
@@ -25,7 +25,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="+"
+			android:text="@string/plus"
 			android:layout_alignParentRight="true"
 			android:id="@+id/redPlusButton"
 			android:layout_below="@id/layout1View1"/>
@@ -33,7 +33,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="-"
+			android:text="@string/minus"
 			android:layout_below="@id/layout1View1"
 			android:layout_centerHorizontal="true"
 			android:id="@+id/redMinusButton"/>
@@ -51,7 +51,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="-"
+			android:text="@string/minus"
 			android:layout_below="@id/redMinusButton"
 			android:layout_centerHorizontal="true"
 			android:id="@+id/greenMinusButton"/>
@@ -59,7 +59,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="+"
+			android:text="@string/plus"
 			android:layout_below="@id/redPlusButton"
 			android:layout_alignParentRight="true"
 			android:id="@+id/greenPlusButton"/>
@@ -77,7 +77,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="-"
+			android:text="@string/minus"
 			android:layout_below="@id/greenMinusButton"
 			android:layout_centerHorizontal="true"
 			android:id="@+id/blueMinusButton"/>
@@ -85,7 +85,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="+"
+			android:text="@string/plus"
 			android:layout_below="@id/greenPlusButton"
 			android:layout_alignParentRight="true"
 			android:id="@+id/bluePlusButton"/>
@@ -103,7 +103,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="0"
+			android:text="@string/zero"
 			android:layout_toLeftOf="@id/redMinusButton"
 			android:layout_alignTop="@id/redMinusButton"
 			android:layout_alignBottom="@id/redMinusButton"
@@ -115,7 +115,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="0"
+			android:text="@string/zero"
 			android:layout_toLeftOf="@id/greenMinusButton"
 			android:layout_alignBottom="@id/greenMinusButton"
 			android:layout_alignTop="@id/greenMinusButton"
@@ -127,7 +127,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="0"
+			android:text="@string/zero"
 			android:layout_toLeftOf="@id/blueMinusButton"
 			android:layout_alignBottom="@id/blueMinusButton"
 			android:layout_alignTop="@id/blueMinusButton"
@@ -139,7 +139,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Red"
+			android:text="@string/red"
 			android:layout_below="@id/layout1View1"
 			android:layout_alignBottom="@id/txtRedValue"
 			android:gravity="center"
@@ -150,7 +150,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Green"
+			android:text="@string/green"
 			android:layout_below="@id/layout1TextView2"
 			android:layout_alignBottom="@id/txtGreenValue"
 			android:gravity="center"
@@ -161,7 +161,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Blue"
+			android:text="@string/blue"
 			android:layout_below="@id/layout1TextView4"
 			android:layout_alignBottom="@id/txtBlueValue"
 			android:gravity="center"
@@ -172,7 +172,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Recovery Mode:"
+			android:text="@string/recovery_mode"
 			android:layout_below="@id/layout1TextView3"
 			android:paddingTop="30dp"
 			android:id="@+id/layout1TextView5"/>
@@ -187,7 +187,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="-"
+			android:text="@string/minus"
 			android:layout_below="@id/layout1View2"
 			android:layout_centerHorizontal="true"
 			android:id="@+id/recoveryRedMinusButton"/>
@@ -195,7 +195,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="+"
+			android:text="@string/plus"
 			android:layout_below="@id/layout1View2"
 			android:layout_alignParentRight="true"
 			android:id="@+id/recoveryRedPlusButton"/>
@@ -212,7 +212,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="-"
+			android:text="@string/minus"
 			android:layout_below="@id/recoveryRedMinusButton"
 			android:layout_centerHorizontal="true"
 			android:id="@+id/recoveryGreenMinusButton"/>
@@ -220,7 +220,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="+"
+			android:text="@string/plus"
 			android:layout_below="@id/recoveryRedPlusButton"
 			android:layout_alignParentRight="true"
 			android:id="@+id/recoveryGreenPlusButton"/>
@@ -237,7 +237,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="-"
+			android:text="@string/minus"
 			android:layout_below="@id/recoveryGreenMinusButton"
 			android:layout_centerHorizontal="true"
 			android:id="@+id/recoveryBlueMinusButton"/>
@@ -245,7 +245,7 @@
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="+"
+			android:text="@string/plus"
 			android:layout_below="@id/recoveryGreenPlusButton"
 			android:layout_alignParentRight="true"
 			android:id="@+id/recoveryBluePlusButton"/>
@@ -262,7 +262,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="0"
+			android:text="@string/zero"
 			android:layout_toLeftOf="@id/recoveryRedMinusButton"
 			android:layout_alignTop="@id/recoveryRedMinusButton"
 			android:layout_alignBottom="@id/recoveryRedMinusButton"
@@ -274,7 +274,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="0"
+			android:text="@string/zero"
 			android:layout_toLeftOf="@id/recoveryGreenMinusButton"
 			android:layout_alignTop="@id/recoveryGreenMinusButton"
 			android:layout_alignBottom="@id/recoveryGreenMinusButton"
@@ -286,7 +286,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="0"
+			android:text="@string/zero"
 			android:layout_toLeftOf="@id/recoveryBlueMinusButton"
 			android:layout_alignTop="@id/recoveryBlueMinusButton"
 			android:layout_alignBottom="@id/recoveryBlueMinusButton"
@@ -298,7 +298,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Red"
+			android:text="@string/red"
 			android:layout_below="@id/layout1View2"
 			android:layout_alignBottom="@id/txtRecoveryRedValue"
 			android:paddingLeft="15dp"
@@ -309,7 +309,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Green"
+			android:text="@string/green"
 			android:layout_below="@id/layout1TextView6"
 			android:gravity="center"
 			android:layout_alignBottom="@id/txtRecoveryGreenValue"
@@ -320,7 +320,7 @@
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Blue"
+			android:text="@string/blue"
 			android:layout_below="@id/layout1TextView7"
 			android:layout_alignBottom="@id/txtRecoveryBlueValue"
 			android:gravity="center"

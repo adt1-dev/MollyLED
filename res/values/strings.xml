@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">LED Customizer</string>
+    <string name="blue">Blue</string>
+    <string name="green">Green</string>
+    <string name="minus">-</string>
+    <string name="normal_mode">Normal Mode:</string>
+    <string name="plus">+</string>
+    <string name="red">Red</string>
+    <string name="recovery_mode">Recovery Mode:</string>
+    <string name="zero">0</string>
 </resources>

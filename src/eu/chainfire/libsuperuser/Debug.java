@@ -27,7 +27,7 @@ public class Debug {
 
     // ----- DEBUGGING -----
 
-    private static boolean debug = BuildConfig.DEBUG;
+    private static boolean debug = true;
 
     /**
      * <p>Enable or disable debug mode</p>
