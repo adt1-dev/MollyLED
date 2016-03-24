@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.cyanogenmod.molly.led"
+    package="com.adt1-dev.molly.led"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Material" >
         <activity
-            android:name="org.cyanogenmod.molly.led.LedConfigActivity"
+            android:name="com.adt1-dev.molly.led.LedConfigActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
