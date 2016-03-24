@@ -32,9 +32,9 @@ public class LedConfigActivity extends Activity
 	int ENABLED = 1, DISABLED = 0;
 
 	String LED_PATH = "/sys/devices/platform/molly-led/";
-	<String> RED_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.red");
-	<String> GREEN_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.green");
-	<String> BLUE_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.blue");
+	String RED_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.red");
+	String GREEN_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.green");
+	String BLUE_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.blue");
 	int RED_VALUE = Integer.parseInt(readOneLine(RED_LED_PROP));
 	int GREEN_VALUE = Integer.parseInt(readOneLine(GREEN_LED_PROP));
 	int BLUE_VALUE = Integer.parseInt(readOneLine(BLUE_LED_PROP));
