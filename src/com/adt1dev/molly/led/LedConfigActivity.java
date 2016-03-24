@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.adt1-dev.molly.led;
+package com.adt1dev.molly.led;
 
 import android.app.*;
 import android.os.*;
@@ -30,10 +30,14 @@ public class LedConfigActivity extends Activity
 {
 	int MAX = 255;
 	int ENABLED = 1, DISABLED = 0;
+
 	String LED_PATH = "/sys/devices/platform/molly-led/";
-	int RED_VALUE = Integer.parseInt(readOneLine(LED_PATH + "red"));
-	int GREEN_VALUE = Integer.parseInt(readOneLine(LED_PATH + "green"));
-	int BLUE_VALUE = Integer.parseInt(readOneLine(LED_PATH + "blue"));
+	<String> RED_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.red");
+	<String> GREEN_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.green");
+	<String> BLUE_LED_PROP = Shell.SU.run("getprop" + "sys.molly.led.blue");
+	int RED_VALUE = Integer.parseInt(readOneLine(RED_LED_PROP));
+	int GREEN_VALUE = Integer.parseInt(readOneLine(GREEN_LED_PROP));
+	int BLUE_VALUE = Integer.parseInt(readOneLine(BLUE_LED_PROP));
 	int PULSING_VALUE = Integer.parseInt(readOneLine(LED_PATH + "pulsing"));
     private static final String TAG = "MollyLED";
 
@@ -220,7 +224,9 @@ public class LedConfigActivity extends Activity
 		protected String writeToDevice(String value, String color)
 		{
 			// I honestly wish there was a better way than this.
-			Shell.SU.run("echo " + value + " > " + LED_PATH + color);
+			Shell.SU.run("setprop " + "sys.molly.led.red" + RED_LED_PROP);
+			Shell.SU.run("setprop " + "sys.molly.led.blue" + BLUE_LED_PROP);
+			Shell.SU.run("setprop " + "sys.molly.led.green" + GREEN_LED_PROP);
 			// Assume that if we are changing value here we want to see the changes
 			if (PULSING_VALUE == 1) {
 				Shell.SU.run("echo " + "0" + " > " + LED_PATH + "pulsing");
